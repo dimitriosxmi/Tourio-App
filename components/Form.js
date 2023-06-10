@@ -25,8 +25,6 @@ const Label = styled.label`
 `;
 
 export default function Form({ onSubmit, formName, defaultData }) {
-  console.log(defaultData);
-
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -41,28 +39,28 @@ export default function Form({ onSubmit, formName, defaultData }) {
         id="name"
         name="name"
         type="text"
-        defaultValue={defaultData[0]?.name}
+        defaultValue={defaultData ? defaultData[0].name : null}
       />
       <Label htmlFor="image-url">Image Url</Label>
       <Input
         id="image-url"
         name="image"
         type="text"
-        defaultValue={defaultData[0]?.image}
+        defaultValue={defaultData ? defaultData[0].image : null}
       />
       <Label htmlFor="location">Location</Label>
       <Input
         id="location"
         name="location"
         type="text"
-        defaultValue={defaultData[0]?.location}
+        defaultValue={defaultData ? defaultData[0].location : null}
       />
       <Label htmlFor="map-url">Map Url</Label>
       <Input
         id="map-url"
         name="mapURL"
         type="text"
-        defaultValue={defaultData[0]?.mapURL}
+        defaultValue={defaultData ? defaultData[0].mapURL : null}
       />
       <Label htmlFor="description">Description</Label>
       <Textarea
@@ -70,10 +68,10 @@ export default function Form({ onSubmit, formName, defaultData }) {
         id="description"
         cols="30"
         rows="10"
-        defaultValue={defaultData[0]?.description}
+        defaultValue={defaultData ? defaultData[0]?.description : null}
       ></Textarea>
       <StyledButton type="submit">
-        {defaultData[0] ? "Update place" : "Add place"}
+        {defaultData ? "Update place" : "Add place"}
       </StyledButton>
     </FormContainer>
   );
